@@ -17,5 +17,7 @@ enum State {
 extern LiquidCrystal lcd;
 extern Keypad keypad;
 extern State state;
+extern String password;
+extern int minutes;
 
 #endif //C4_PROP_GLOBALS_H
