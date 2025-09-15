@@ -12,8 +12,8 @@ char keys[ROWS][COLS] = {
     { '7', '8', '9'},
     { '*', '0', '#'}
 };
-byte rowPins[ROWS] = { A0, A1, A2, A3};  //connect to the row pinouts of the keypad
-byte colPins[COLS] = { A4, A5, 13 };  //connect to the column pinouts of the keypad
+byte rowPins[ROWS] = { A3, A2, A1, A0};  // Reversed
+byte colPins[COLS] = { 12, A5, A4 };     // Reversed
 //Create an object of keypad
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
@@ -26,6 +26,11 @@ void setup() {
     state = SetPassword;
     password = "";
     minutes = 0;
+
+    lcd.clear();
+    lcd.print("display test");
+    delay(500);
+    lcd.clear();
 }
 
 void loop() {
