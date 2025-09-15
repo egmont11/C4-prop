@@ -4,7 +4,10 @@
 #include <globals.h>
 
 void drawTimer() {
-
+    lcd.setCursor(0, 0);
+    lcd.print("Minutes:");
+    lcd.setCursor(0, 1);
+    lcd.print(minutes);
 }
 
 void setupTimer() {
