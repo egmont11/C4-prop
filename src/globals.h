@@ -19,5 +19,7 @@ extern Keypad keypad;
 extern State state;
 extern String password;
 extern int minutes;
+extern long seconds;
+extern String passwordOnDefusal;
 
 #endif //C4_PROP_GLOBALS_H

@@ -20,6 +20,9 @@ Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 State state;
 String password;
 int minutes;
+long seconds;
+
+String passwordOnDefusal;
 
 void setup() {
     lcd.begin(16, 2);

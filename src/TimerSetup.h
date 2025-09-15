@@ -17,11 +17,12 @@ void setupTimer() {
         if (key == '*') {
             // Backspace functionality
             if (minutes > 0) {
-                minutes - 1;
+                minutes -= 1;
             }
         }
         else if (key == '#') {
             state = Ticking;
+            seconds = minutes*60;
         }
         else {
             switch (key) {
