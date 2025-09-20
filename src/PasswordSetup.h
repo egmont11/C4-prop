@@ -20,6 +20,11 @@ void setupPassword() {
                 password.remove(password.length() - 1);
             }
         }
+        else if (key == '#') {
+            if (password.length() > 0) {
+                state = SetTimer;
+            }
+        }
         else {
             password += key;
         }
