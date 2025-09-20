@@ -5,13 +5,13 @@
 
 void drawPassword() {
     lcd.setCursor(0, 0);
-    lcd.print("PSWD:");
+    lcd.print("PASSWORD:");
     lcd.setCursor(0, 1);
     lcd.print(password);
 }
 
 void setupPassword() {
-    char key = keypad.getKey();
+    const char key = keypad.getKey();
 
     if (key != NO_KEY) {
         if (key == '*') {

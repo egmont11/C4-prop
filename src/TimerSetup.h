@@ -11,7 +11,7 @@ void drawTimer() {
 }
 
 void setupTimer() {
-    char key = keypad.getKey();
+    const char key = keypad.getKey();
 
     if (key != NO_KEY) {
         if (key == '*') {
@@ -53,7 +53,6 @@ void setupTimer() {
                     minutes += 9;
                     break;
             }
-            password += key;
         }
     }
 }

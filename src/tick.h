@@ -5,6 +5,7 @@
 
 void drawTick() {
     lcd.setCursor(0, 0);
+    lcd.print("TIME: ");
     lcd.print(seconds); //TODO: turn this into 00:00:00
     lcd.setCursor(0, 1);
     lcd.print(passwordOnDefusal);
@@ -19,8 +20,17 @@ void checkPassword() {
     }
 }
 
+void DoTick() {
+    if (seconds > 0) {
+        seconds -= 1;
+    }
+    else {
+        state = Defused;
+    }
+}
+
 void bombTick() {
-    char key = keypad.getKey();
+    const char key = keypad.getKey();
     if (key != NO_KEY) {
         if (key == '#') {
             checkPassword();
@@ -33,6 +43,9 @@ void bombTick() {
         }
     }
     drawTick();
+
+    DoTick();
+    delay(1000);
 }
 
 #endif
