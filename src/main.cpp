@@ -36,6 +36,7 @@ void setup() {
 }
 
 void loop() {
+
     if (state == SetPassword) {
         setupPassword();
     }
@@ -49,6 +50,10 @@ void loop() {
     }
 
     else if (state == Defused) {
+
+    }
+
+    else if (state = Explosion) {
 
     }
 }

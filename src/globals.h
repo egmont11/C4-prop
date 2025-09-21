@@ -11,6 +11,7 @@ enum State {
     SetTimer,
     Ticking,
     Defused,
+    Explosion
 };
 
 // Extern declarations (these are defined in main.cpp)

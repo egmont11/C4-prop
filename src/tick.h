@@ -48,7 +48,7 @@ void DoTick() {
         seconds -= 1;
     }
     else {
-        state = Defused;
+        state = Explosion;
     }
 }
 
