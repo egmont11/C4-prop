@@ -23,6 +23,7 @@ void setupPassword() {
         else if (key == '#') {
             if (password.length() > 0) {
                 state = SetTimer;
+                lcd.clear();
             }
         }
         else {

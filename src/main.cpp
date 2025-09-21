@@ -30,7 +30,6 @@ void setup() {
     password = "";
     minutes = 0;
 
-    lcd.clear();
     lcd.print("display test");
     delay(500);
     lcd.clear();

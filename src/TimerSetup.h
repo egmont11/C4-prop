@@ -3,11 +3,20 @@
 
 #include <globals.h>
 
+int lastMinutes = -1; // remember last value
+
 void drawTimer() {
-    lcd.setCursor(0, 0);
-    lcd.print("Minutes:");
-    lcd.setCursor(0, 1);
-    lcd.print(minutes);
+    if (minutes != lastMinutes) {
+        lcd.setCursor(0, 0);
+        lcd.print("Minutes:");
+
+        lcd.setCursor(0, 1);
+        char buffer[5];
+        sprintf(buffer, "%-4d", minutes); // print with padding
+        lcd.print(buffer);
+
+        lastMinutes = minutes;
+    }
 }
 
 void setupTimer() {
@@ -23,6 +32,7 @@ void setupTimer() {
         else if (key == '#') {
             state = Ticking;
             seconds = minutes*60;
+            lcd.clear();
         }
         else {
             switch (key) {
@@ -46,6 +56,7 @@ void setupTimer() {
                     break;
                 case '7':
                     minutes += 7;
+                    break;
                 case '8':
                     minutes += 8;
                     break;
@@ -55,6 +66,8 @@ void setupTimer() {
             }
         }
     }
+
+    drawTimer();
 }
 
 #endif //UNTITLED_TIMERSETUP_H
