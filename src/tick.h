@@ -3,6 +3,34 @@
 
 #include <globals.h>
 
+// Buzzer timing state
+unsigned long lastBeep = 0;
+
+// Determine beep interval based on remaining time
+unsigned int getBeepIntervalMs(long remainingSeconds) {
+    if (remainingSeconds <= 0) return 0;
+    if (remainingSeconds <= 2) return 60; // very rapid at last 3 seconds
+    if (remainingSeconds <= 5) return 110; // rapid at last 6 seconds
+    if (remainingSeconds <= 10) return 200;     // fast under 10s
+    if (remainingSeconds <= 15) return 400;
+    if (remainingSeconds <= 60) return 800;     // moderate under 1 min
+    if (remainingSeconds <= 120) return 1300;
+    return 2000;                                 // once per second otherwise
+}
+
+// Update buzzer with non-blocking short blips using tone()
+void updateBuzzer() {
+    if (state != Ticking) return; // only during ticking
+    const unsigned int interval = getBeepIntervalMs(seconds);
+    if (interval == 0) return;
+    const unsigned long now = millis();
+    if (now - lastBeep >= interval) {
+        lastBeep = now;
+        // short beep; passive buzzer frequency 2kHz, duration 30ms (auto-stops)
+        tone(BUZZER_PIN, 2000, 30);
+    }
+}
+
 void drawTick() {
     int hours = seconds / 3600;
     int minutes = (seconds % 3600) / 60;
@@ -22,6 +50,7 @@ void drawTick() {
 void checkPassword() {
     if (passwordOnDefusal == password) {
         state = Defused;
+        noTone(BUZZER_PIN);
         lcd.clear();
         lcd.print("CORRECT PASSWORD");
         lcd.setCursor(0, 1);
@@ -49,6 +78,7 @@ void DoTick() {
     }
     else {
         state = Explosion;
+        noTone(BUZZER_PIN);
     }
 }
 
@@ -78,6 +108,9 @@ void bombTick() {
         lastTick = millis();
         DoTick();
     }
+
+    // Update buzzer cadence
+    updateBuzzer();
 }
 
 #endif

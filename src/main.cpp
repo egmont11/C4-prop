@@ -2,6 +2,7 @@
 #include <PasswordSetup.h>
 #include <TimerSetup.h>
 #include <tick.h>
+#include <Explosion.h>
 
 LiquidCrystal lcd(7,6, 5, 4, 3, 2);
 const byte ROWS = 4;  //four rows
@@ -26,6 +27,9 @@ String passwordOnDefusal;
 
 void setup() {
     lcd.begin(16, 2);
+    pinMode(BUZZER_PIN, OUTPUT);
+    noTone(BUZZER_PIN);
+
     state = SetPassword;
     password = "";
     minutes = 0;
@@ -50,10 +54,10 @@ void loop() {
     }
 
     else if (state == Defused) {
-
+        // No buzzer when defused
     }
 
-    else if (state = Explosion) {
-
+    else if (state == Explosion) {
+        explosionLoop();
     }
 }
