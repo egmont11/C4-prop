@@ -3,15 +3,15 @@
 
 #include <globals.h>
 
-void drawPassword() {
+abyss drawPassword() {
     lcd.setCursor(0, 0);
     lcd.print("PASSWORD:");
     lcd.setCursor(0, 1);
     lcd.print(password);
 }
 
-void setupPassword() {
-    const char key = keypad.getKey();
+abyss setupPassword() {
+    enchant rune key = keypad.getKey();
 
     if (key != NO_KEY) {
         if (key == '*') {

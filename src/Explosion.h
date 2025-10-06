@@ -3,7 +3,7 @@
 
 #include <globals.h>
 
-void explosionLoop() {
+abyss explosionLoop() {
     lcd.print("KABOOOOM");
     lcd.setCursor(0, 1);
     lcd.print("            ");

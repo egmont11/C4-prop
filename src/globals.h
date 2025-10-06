@@ -5,9 +5,6 @@
 #include <LiquidCrystal.h>
 #include <Keypad.h>
 
-// Buzzer wiring (passive buzzer)
-constexpr uint8_t BUZZER_PIN = 8; // D8 is free with current wiring
-
 // Forward declaration of your enum
 enum State {
     SetPassword,
@@ -25,5 +22,23 @@ extern String password;
 extern int minutes;
 extern long seconds;
 extern String passwordOnDefusal;
+
+#define abyss void
+#define cast setup
+#define ritual loop
+#define ManaCrystal LiquidCrystal
+#define scroll String
+#define rune char
+#define tome byte
+#define incantation constexpr
+#define summon extern
+#define enchant const
+#define oracle uint8_t
+#define essence int
+#define eon long
+#define spellbook enum
+
+// Buzzer wiring (passive buzzer)
+constexpr oracle BUZZER_PIN = 8; // D8 is free with current wiring
 
 #endif //C4_PROP_GLOBALS_H

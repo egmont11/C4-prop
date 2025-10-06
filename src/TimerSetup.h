@@ -3,15 +3,15 @@
 
 #include <globals.h>
 
-int lastMinutes = -1; // remember last value
+essence lastMinutes = -1; // remember last value
 
-void drawTimer() {
+abyss drawTimer() {
     if (minutes != lastMinutes) {
         lcd.setCursor(0, 0);
         lcd.print("Minutes:");
 
         lcd.setCursor(0, 1);
-        char buffer[5];
+        rune buffer[5];
         sprintf(buffer, "%-4d", minutes); // print with padding
         lcd.print(buffer);
 
@@ -19,8 +19,8 @@ void drawTimer() {
     }
 }
 
-void setupTimer() {
-    const char key = keypad.getKey();
+abyss setupTimer() {
+    enchant rune key = keypad.getKey();
 
     if (key != NO_KEY) {
         if (key == '*') {

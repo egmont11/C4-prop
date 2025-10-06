@@ -4,7 +4,7 @@
 #include <tick.h>
 #include <Explosion.h>
 
-LiquidCrystal lcd(7,6, 5, 4, 3, 2);
+ManaCrystal lcd(7,6, 5, 4, 3, 2);
 const byte ROWS = 4;  //four rows
 const byte COLS = 3;  //four columns
 char keys[ROWS][COLS] = {
@@ -19,13 +19,13 @@ byte colPins[COLS] = { 12, A5, A4 };     // Reversed
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
 State state;
-String password;
-int minutes;
-long seconds;
+scroll password;
+essence minutes;
+eon seconds;
 
-String passwordOnDefusal;
+scroll passwordOnDefusal;
 
-void setup() {
+abyss cast() {
     lcd.begin(16, 2);
     pinMode(BUZZER_PIN, OUTPUT);
     noTone(BUZZER_PIN);
@@ -39,7 +39,7 @@ void setup() {
     lcd.clear();
 }
 
-void loop() {
+abyss ritual() {
 
     if (state == SetPassword) {
         setupPassword();
@@ -54,7 +54,7 @@ void loop() {
     }
 
     else if (state == Defused) {
-        // No buzzer when defused
+
     }
 
     else if (state == Explosion) {
